@@ -1,0 +1,48 @@
+<div class="font-sans antialiased bg-background dark:bg-darkBackground text-textColor dark:text-darkTextColor min-h-screen transition-all duration-300 p-6">
+
+    <!-- Theme Toggle Button -->
+    <div class="flex justify-end">
+        <button 
+            (click)="toggleTheme()" 
+            class="p-2 bg-primary dark:bg-secondary text-white rounded transition-all duration-300">
+            Toggle Theme
+        </button>
+    </div>
+
+    @if (user) {
+        <div class="profile-container relative bg-cardBg dark:bg-darkCardBg text-textColor dark:text-darkTextColor 
+            border border-gray-300 dark:border-gray-700 p-6 rounded-lg shadow-md transition-all duration-300">
+
+            <!-- User Details -->
+            <h1 class="text-4xl font-bold dark:text-darkTextColor">
+                {{ user.name }}
+                <button (click)="toggleFavorite(user.id)"
+                    class="absolute top-3 right-3 bg-transparent border-none cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"
+                        class="w-6 h-6 transition-all duration-300 text-yellow-400">
+                        <path d="M12 2L9.09 8.26 2 9.27l5.46 4.73L5.82 21L12 17.27L18.18 21l-1.64-7L22 9.27l-7.09-1.01L12 2z"/>
+                    </svg>
+                </button>
+            </h1>
+
+            <p class="dark:text-darkTextColor"><strong>Username: </strong> <span class="dark:text-gray-300">{{ user.username }}</span></p>
+            <p class="dark:text-darkTextColor"><strong>Email: </strong> <span class="dark:text-gray-300">{{ user.email }}</span></p>
+            <p class="dark:text-darkTextColor"><strong>Phone: </strong> <span class="dark:text-gray-300">{{ user.phone }}</span></p>
+            <p class="dark:text-darkTextColor"><strong>Website: </strong> 
+                <a [href]="'http://' + user.website" target="_blank" 
+                    class="text-teal-500 dark:text-teal-300 hover:underline">
+                    {{ user.website }}
+                </a>
+            </p>
+            <p class="dark:text-darkTextColor"><strong>Company: </strong> <span class="dark:text-gray-300">{{ user.company.name }}</span></p>
+            <p class="dark:text-darkTextColor"><strong>Address: </strong> <span class="dark:text-gray-300">{{ user.address.street }}, {{ user.address.city }}</span></p>
+
+            <!-- Back Button -->
+            <button 
+                (click)="goBack()" 
+                class="w-full mt-6 h-10 bg-teal-500 dark:bg-teal-600 text-white rounded-md text-xs hover:bg-teal-600 dark:hover:bg-teal-700 transition-all duration-300">
+                Back
+            </button>
+        </div>
+    }
+</div>

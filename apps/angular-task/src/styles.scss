@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --card-bg: #ffffff;
+  --dark-card-bg: #1E293B;
+}
+
+.profile-container {
+  background-color: var(--card-bg);
+}
+
+.dark .profile-container {
+  background-color: var(--dark-card-bg) !important;
+}
