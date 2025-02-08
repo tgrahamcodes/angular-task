@@ -1,50 +1,47 @@
 <div class="font-sans antialiased bg-gray-100 dark:bg-gray-900 text-textColor dark:text-gray-100 min-h-screen transition-all duration-300 p-6">
-
     <!-- Theme Toggle -->
     <div class="flex justify-end">
-        <button 
-            (click)="toggleTheme()" 
-            class="p-2 bg-primary dark:bg-secondary text-white rounded transition-all duration-300">
-            Toggle Theme
+        <button (click)="toggleTheme()" class="p-2 bg-primary dark:bg-secondary text-white rounded transition-all duration-300">
+            {{ isDarkMode ? 'Light Mode' : 'Dark Mode' }}
         </button>
     </div>
 
-    <h1 class="text-3xl font-bold text-center mb-6 font-display text-textColor dark:text-darkTextColor">
-        User Management
-    </h1>
+    <h1 class="text-3xl font-bold text-center mb-6 font-display text-textColor dark:text-darkTextColor">User Management</h1>
 
     <!-- Search Bar -->
     <div class="flex justify-center mb-4">
         <input
-            type="text"
-            class="w-2/3 md:w-1/2 lg:w-1/3 p-2 border border-gray-300 dark:border-gray-600 rounded-md 
-                focus:border-teal-500 focus:ring-2 focus:ring-teal-300 outline-none font-sans bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
-            placeholder="Search users"
-            [(ngModel)]="searchTerm"
             (keyup)="filterUsers()"
+            [(ngModel)]="searchTerm"
+            class="w-2/3 md:w-1/2 lg:w-1/3 p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:border-teal-500 focus:ring-2 focus:ring-teal-300 outline-none font-sans bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+            placeholder="Search users"
+            type="text"
         />
     </div>
 
     <!-- Favorites Section -->
-    @if (favoriteUsers.length > 0){
+    @if (favoriteUsers.length > 0) {
         <h2 class="text-xl font-semibold mb-4 text-primary dark:text-secondary flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-yellow-400 mr-2">
-                <path d="M12 2L15.09 8.26L22 9.27l-5.46 4.73L18.18 21L12 17.27L5.82 21l1.64-7L2 9.27l7.09-1.01L12 2z"/>
+            <svg class="w-6 h-6 text-yellow-400 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L15.09 8.26L22 9.27l-5.46 4.73L18.18 21L12 17.27L5.82 21l1.64-7L2 9.27l7.09-1.01L12 2z" />
             </svg>
             Favorite Users
         </h2>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-[3em] p-4">
             @for (user of favoriteUsers; track user.id) {
-                <div class="p-6 pb-6 rounded-lg shadow-md transition-all duration-300 w-[250px] md:w-[280px] lg:w-[300px] flex flex-col justify-between h-full relative
-                    bg-cardBg dark:bg-darkCardBg text-textColor dark:text-darkTextColor border border-gray-200 dark:border-gray-700">
-                    
+                <div
+                    class="p-6 pb-6 rounded-lg shadow-md transition-all duration-300 w-[250px] md:w-[280px] lg:w-[300px] flex flex-col justify-between h-full relative bg-cardBg dark:bg-darkCardBg text-textColor dark:text-darkTextColor border border-gray-200 dark:border-gray-700"
+                >
                     <!-- Favorite Button -->
-                    <button (click)="toggleFavorite(user.id)"
-                        class="absolute top-3 right-3 bg-transparent border-none cursor-pointer">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"
-                            class="w-6 h-6 transition-all duration-300 text-yellow-400">
-                            <path d="M12 2L9.09 8.26 2 9.27l5.46 4.73L5.82 21L12 17.27L18.18 21l-1.64-7L22 9.27l-7.09-1.01L12 2z"/>
+                    <button (click)="toggleFavorite(user.id)" class="absolute top-3 right-3 bg-transparent border-none cursor-pointer">
+                        <svg
+                            class="w-6 h-6 transition-all duration-300 text-yellow-400"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path d="M12 2L9.09 8.26 2 9.27l5.46 4.73L5.82 21L12 17.27L18.18 21l-1.64-7L22 9.27l-7.09-1.01L12 2z" />
                         </svg>
                     </button>
 
@@ -53,9 +50,10 @@
 
                     <!-- View Profile Button for All Users -->
                     <div class="flex justify-center mt-4">
-                        <button 
-                            (click)="goToProfile(user.id)" 
-                            class="w-3/4 h-8 bg-teal-500 dark:bg-teal-600 text-white rounded-md text-sm hover:bg-teal-600 dark:hover:bg-teal-700 transition-all duration-300 font-display">
+                        <button
+                            (click)="goToProfile(user.id)"
+                            class="w-3/4 h-8 bg-teal-500 dark:bg-teal-600 text-white rounded-md text-sm hover:bg-teal-600 dark:hover:bg-teal-700 transition-all duration-300 font-display"
+                        >
                             View Profile
                         </button>
                     </div>
@@ -65,25 +63,32 @@
     }
 
     <!-- Regular Users Section -->
-    @if (regularUsers.length > 0){
+    @if (regularUsers.length > 0) {
         <h2 class="text-xl font-semibold mt-6 mb-4 text-primary dark:text-secondary flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-primary dark:text-secondary mr-2">
-                <path fill-rule="evenodd" d="M12 2C9.243 2 7 4.243 7 7s2.243 5 5 5 5-2.243 5-5-2.243-5-5-5zm-7 16a7 7 0 0114 0H5z" clip-rule="evenodd" />
+            <svg class="w-6 h-6 text-primary dark:text-secondary mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    clip-rule="evenodd"
+                    d="M12 2C9.243 2 7 4.243 7 7s2.243 5 5 5 5-2.243 5-5-2.243-5-5-5zm-7 16a7 7 0 0114 0H5z"
+                    fill-rule="evenodd"
+                />
             </svg>
             Regular Users
         </h2>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-[3em] p-4">
             @for (user of regularUsers; track user.id) {
-                <div class="p-6 pb-6 rounded-lg shadow-md transition-all duration-300 w-[250px] md:w-[280px] lg:w-[300px] flex flex-col justify-between h-full relative
-                    bg-cardBg dark:bg-darkCardBg text-textColor dark:text-darkTextColor border border-gray-200 dark:border-gray-700">
-
+                <div
+                    class="p-6 pb-6 rounded-lg shadow-md transition-all duration-300 w-[250px] md:w-[280px] lg:w-[300px] flex flex-col justify-between h-full relative bg-cardBg dark:bg-darkCardBg text-textColor dark:text-darkTextColor border border-gray-200 dark:border-gray-700"
+                >
                     <!-- Favorite Icon -->
-                    <button (click)="toggleFavorite(user.id)"
-                        class="absolute top-3 right-3 bg-transparent border-none cursor-pointer">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"
-                            class="w-6 h-6 transition-all duration-300 text-gray-400 hover:text-yellow-400">
-                            <path d="M12 2L9.09 8.26 2 9.27l5.46 4.73L5.82 21L12 17.27L18.18 21l-1.64-7L22 9.27l-7.09-1.01L12 2z"/>
+                    <button (click)="toggleFavorite(user.id)" class="absolute top-3 right-3 bg-transparent border-none cursor-pointer">
+                        <svg
+                            class="w-6 h-6 transition-all duration-300 text-gray-400 hover:text-yellow-400"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path d="M12 2L9.09 8.26 2 9.27l5.46 4.73L5.82 21L12 17.27L18.18 21l-1.64-7L22 9.27l-7.09-1.01L12 2z" />
                         </svg>
                     </button>
 
@@ -92,9 +97,10 @@
 
                     <!-- View Profile Button for All Users -->
                     <div class="flex justify-center mt-4">
-                        <button 
-                            (click)="goToProfile(user.id)" 
-                            class="w-3/4 h-8 bg-teal-500 dark:bg-teal-600 text-white rounded-md text-sm hover:bg-teal-600 dark:hover:bg-teal-700 transition-all duration-300 font-display">
+                        <button
+                            (click)="goToProfile(user.id)"
+                            class="w-3/4 h-8 bg-teal-500 dark:bg-teal-600 text-white rounded-md text-sm hover:bg-teal-600 dark:hover:bg-teal-700 transition-all duration-300 font-display"
+                        >
                             View Profile
                         </button>
                     </div>

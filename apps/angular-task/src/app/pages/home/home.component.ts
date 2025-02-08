@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
         private userService: UserService,
         private router: Router,
         private cdr: ChangeDetectorRef,
-        @Inject(DOCUMENT) private document: any // ✅ Fix: Use `any` to prevent Jest errors
+        @Inject(DOCUMENT) private document: unknown
     ) {}
 
     ngOnInit (): void {
@@ -108,7 +108,7 @@ export class HomeComponent implements OnInit {
             if (this.hasLocalStorage()) {
 
                 this.isDarkMode = !this.isDarkMode;
-                this.document?.documentElement?.classList.toggle('dark', this.isDarkMode);
+                (this.document as Document)?.documentElement?.classList.toggle('dark', this.isDarkMode);
                 globalThis.localStorage.setItem('theme', this.isDarkMode ? 'dark' : 'light');
                 this.cdr.detectChanges();
 
@@ -151,7 +151,7 @@ export class HomeComponent implements OnInit {
 
                 const theme: string | null = globalThis.localStorage.getItem('theme');
                 this.isDarkMode = theme === 'dark';
-                this.document?.documentElement?.classList.toggle('dark', this.isDarkMode);
+                (this.document as Document)?.documentElement?.classList.toggle('dark', this.isDarkMode);
 
             }
 

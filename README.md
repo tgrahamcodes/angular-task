@@ -1,40 +1,75 @@
-# AngularTask
+# **Angular Task**
 
-## Goal
+This is an Nx-powered Angular application designed for user management. It retrieves the user data from JSONPlaceholder, and then provides filtering capabilities, a search filter, and a favorite system.
 
-The goal of this assignment is to showcase your skills and coding style while building an enterprise grade Angular application. You may take your time with this assessment to show case your skills. Once you have it working you can add some extra flare with unit testing, e2e testing with playwright, updated styles to make it snazzy, or whatever else you feel like. 
+## -- Features --
+- **User Card Grid View**  Displays users dynamically fetched from an API.
+- **Search & Filtering**  Users can be filtered using a search bar.
+- **Favorites System**  Users can be marked as favorites and persist via NgRx store.
+- **Profile Page**  Each user has a dedicated profile page.
+- **State Management**  NgRx is used for handling favorite users.
+- **Unit & E2E Testing**  Implemented using Jest and Playwright.
+- **Tailwind CSS Styling**  Ensures a modern, responsive UI.
 
-> [!TIP] 
-> **State Management** - We have included all of the `@ngrx` packages but you're welcome to use any state management library you see fit or just stateful services.
-> 
-> **Component Library** - We have included [@angular/material](https://material.angular.io/components/categories) but you're welcome to use any component library that suites your needs. Ex: [PrimeNG](https://primeng.org/installation)
+---
 
-## Getting Started
+## -- Getting Started --
 
-> [!CAUTION]
-> **DO NOT FORK THIS REPO** - Instead click the [Download Zip](https://github.com/crexi-dev/angular/archive/refs/heads/main.zip).
+### **1. Install Dependencies**
+Run the following command to install required packages:
+```sh
+npm install
+```
 
-- Install packages with `npm i`
-- Serve the application using `npx nx run angular-task:serve`
-- You're off to the races coding! Good luck!
+### **2. Run the Application**
+Start the application locally using:
+```sh
+npx nx run angular-task:serve
+```
 
-## Useful NX tips and tricks
-> [!TIP]
-> **NX Generators** - you're more than welcome to modify the [NX Generators](https://nx.dev/reference/nx-json#generators) section inside of the `nx.json` file with any changes you prefer for your setup.
-- [@nx/angular:component Documentation](https://nx.dev/nx-api/angular/generators/component) Create an angular component using `npx nx g @nx/angular:component`
-- Create an angular service using `npx nx g @nx/angular:service`
-- [@nx/angular:pipe Documentation](https://nx.dev/nx-api/angular/generators/pipe) Create an angular pipe using `npx nx g @nx/angular:pipe`
-- [@nx/angular:directive Documentation](https://nx.dev/nx-api/angular/generators/directive) Create an angular directive using `npx nx g @nx/angular:directive`
-- [@nx/angular:library Documentation](https://nx.dev/nx-api/angular/generators/library) Create an angular library using `npx nx g @nx/angular:library`
+### **3. Run Unit Tests**
+To run unit tests using **Jest**:
+```sh
+npx nx run angular-task:test
+```
 
-## User Management Application
+### **4. Run End-to-End (E2E) Tests**
+To execute **Playwright E2E tests**:
+```sh
+npx nx run angular-task-e2e:e2e
+```
 
-1. Home page should show a card view of users from [JSONplaceholder](https://jsonplaceholder.typicode.com/). The home page should allow you to click on a users card to navigate to their profile page.
-2. The profile page should use the angular router and exist at `/users/:id` and display all of the user information for the id in the route path.
-3. Add filter(s) to the home page to allow the user to filter the list.
-4. Add a way to favorite users in both the card view and detail page.
-5. Run the following command to verify that your changes lint, test, and build correctly: `npx nx affected -t lint test build`.
+---
 
-## Submitting your Assessment
+## ** Project Structure**
+```
+angular-task/
+│── apps/
+│   ├── angular-task/          # Main Angular application
+│   │   ├── src/
+│   │   │   ├── app/
+│   │   │   │   ├── pages/     # Newly added Components for Home & User Profile
+│   │   │   │   ├── services/  # API services & user data fetching
+│   │   │   │   ├── store/     # NgRx store for favorites
+│   │   │   ├── assets/
+│   │   │   ├── environments/
+│   │   ├── project.json       # Nx project configuration
+│   ├── angular-task-e2e/      # End-to-end tests
+│── libs/                      # Nx workspace libraries (if needed)
+│── nx.json                    # Nx workspace settings
+│── package.json               # Dependencies & scripts
+│── README.md                   # Documentation
+│── tsconfig.base.json          # TypeScript base configuration
+│── tsconfig.spec.json          # Test-specific TypeScript configuration
+```
 
-Please submit a link to your public github repo and approximately how long it took you to complete this task. We will have a panel to discuss your desicions and design patterns.
+---
+
+## **Configuration**
+This project is built with:
+- **Nx**  For workspace & project management.
+- **Angular**  For frontend UI development.
+- **NgRx**  For state management (favorites feature).
+- **Jest**  For unit testing.
+- **Playwright**  For end-to-end (E2E) testing.
+- **Tailwind CSS**  For responsive and modern UI design.
