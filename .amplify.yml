@@ -6,12 +6,12 @@ frontend:
         - nvm install 20
         - nvm use 20
         - node -v
-        - npm ci
+        - npm install
     build:
       commands:
-        - npx nx run angular-task:build
+        - npx nx build angular-task  # ✅ Build the Angular app instead of serving it
   artifacts:
-    baseDirectory: dist/apps/angular-task
+    baseDirectory: dist/apps/angular-task  # ✅ Ensure it points to the correct build output
     files:
       - '**/*'
   cache:
