@@ -6,15 +6,12 @@ frontend:
         - nvm install 20
         - nvm use 20
         - node -v
-        - npm install
+        - npm ci
     build:
       commands:
-        - npm run build
-    serve:
-      commands:
-        - npx nx serve angular-task
+        - npx nx run angular-task:build
   artifacts:
-    baseDirectory: dist
+    baseDirectory: dist/apps/angular-task
     files:
       - '**/*'
   cache:
