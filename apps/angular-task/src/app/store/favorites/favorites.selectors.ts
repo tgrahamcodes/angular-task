@@ -1,4 +1,4 @@
-import { createSelector, createFeatureSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { FavoritesState } from './favorites.state';
 
 export const selectFavoritesFeature = createFeatureSelector<FavoritesState>('favorites');

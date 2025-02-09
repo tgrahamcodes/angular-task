@@ -10,6 +10,9 @@ frontend:
     build:
       commands:
         - npm run build
+    serve:
+      commands:
+        - npx nx serve angular-task
   artifacts:
     baseDirectory: dist
     files:

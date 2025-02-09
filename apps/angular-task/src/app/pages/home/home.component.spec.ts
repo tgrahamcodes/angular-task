@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
-import { User, UserService } from '../../services/user.service';
 import { of } from 'rxjs';
+import { User, UserService } from '../../services/user.service';
 
 describe('UserService', () => {
 
