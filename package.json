@@ -6,6 +6,9 @@
   "scripts": {
     "prepare": "husky"
   },
+  "engines": {
+    "node": ">=18.19.1"
+  },
   "lint-staged": {
     "*.{ts,scss,html}": [
       "eslint --fix"
