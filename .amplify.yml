@@ -9,11 +9,13 @@ frontend:
         - npm install
     build:
       commands:
-        - npx nx build angular-task  # ✅ Build the Angular app instead of serving it
+        - npx nx build angular-task --configuration=production
   artifacts:
-    baseDirectory: dist/apps/angular-task  # ✅ Ensure it points to the correct build output
+    baseDirectory: dist/apps/angular-task
     files:
       - '**/*'
   cache:
     paths:
       - node_modules/**/*
+  deploy:
+    timeout: 30
