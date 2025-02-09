@@ -9,7 +9,7 @@ frontend:
         - npm install
     build:
       commands:
-        - npx nx build angular-task --configuration=production
+        - npx nx build angular-task
   artifacts:
     baseDirectory: dist/apps/angular-task
     files:
