@@ -51,11 +51,6 @@ describe('UserService', () => {
         expect(users?.[0]?.address?.street).toBe('Main St');
         expect(users?.[0]?.address?.city).toBe('Boston');
 
-        // Verify nested properties
-        expect(users?.[0]?.company.name).toBe('Tom Graham Inc.');
-        expect(users?.[0]?.address.street).toBe('Main St');
-        expect(users?.[0]?.address.city).toBe('Boston');
-
     });
 
     it('should call getUsers()', () => {
