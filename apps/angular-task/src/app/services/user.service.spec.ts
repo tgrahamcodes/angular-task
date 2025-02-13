@@ -6,7 +6,6 @@ describe('UserService', () => {
 
     let service: UserService;
 
-    // Define mock data
     const mockUsers = [
         {
             id: 1,

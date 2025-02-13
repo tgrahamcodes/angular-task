@@ -94,13 +94,14 @@ export class UserProfileComponent implements OnInit {
 
         this.user.favorite = !this.user.favorite;
         this.saveFavoriteState(userId, this.user.favorite);
+
         this.cdr.detectChanges();
 
     }
 
     isFavorite (): boolean {
 
-        return this.user?.favorite ?? false;
+        return this.user ? this.loadFavoriteState(this.user.id) : false;
 
     }
 
@@ -108,13 +109,17 @@ export class UserProfileComponent implements OnInit {
 
         try {
 
-            if (typeof globalThis !== 'undefined') {
+            const favorites = JSON.parse(globalThis.localStorage.getItem('favorites') || '{}');
+            if (isFavorite) {
 
-                const favorites = JSON.parse(globalThis.localStorage.getItem('favorites') || '{}');
-                favorites[userId] = isFavorite;
-                globalThis.localStorage.setItem('favorites', JSON.stringify(favorites));
+                favorites[userId] = true;
+
+            } else {
+
+                delete favorites[userId];
 
             }
+            globalThis.localStorage.setItem('favorites', JSON.stringify(favorites));
 
         } catch (error) {
 
@@ -128,19 +133,14 @@ export class UserProfileComponent implements OnInit {
 
         try {
 
-            if (typeof globalThis !== 'undefined') {
-
-                const favorites = JSON.parse(globalThis.localStorage.getItem('favorites') || '{}');
-                return favorites[userId] || false;
-
-            }
+            const favorites = JSON.parse(globalThis.localStorage.getItem('favorites') || '{}');
+            return !!favorites[userId];
 
         } catch (error) {
 
             console.warn('Error loading favorite state:', error);
 
         }
-
         return false;
 
     }

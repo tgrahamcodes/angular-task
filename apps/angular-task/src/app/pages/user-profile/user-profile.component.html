@@ -18,9 +18,11 @@
             <h1 class="text-4xl font-bold dark:text-darkTextColor">
                 {{ user.name }}
                 <!-- Favorite Button -->
-                <button (click)="toggleFavorite(user.id)" class="absolute top-3 right-3 bg-transparent border-none cursor-pointer">
+                <button (click)="toggleFavorite(user.id)" class="absolute top-3 right-3 bg-transparent border-none cursor-pointer focus:outline-none">
                     <svg
-                        class="w-6 h-6 transition-all duration-300 text-yellow-400"
+                        [class.text-gray-400]="!isFavorite()"
+                        [class.text-yellow-400]="isFavorite()"
+                        class="w-6 h-6 transition-all duration-300"
                         fill="currentColor"
                         viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg"
