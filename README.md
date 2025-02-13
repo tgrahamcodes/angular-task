@@ -22,7 +22,7 @@ npm install
 ```
 
 ### **2. Run the Application**
-Start the application locally using:
+Start the application locally using (from the root dir):
 ```sh
 npx nx run angular-task:serve
 ```
